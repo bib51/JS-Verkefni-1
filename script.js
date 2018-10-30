@@ -12,9 +12,11 @@ const GAMES_TO_PLAY = 10;
  * með kalli í play().
  * Eftir leik er notanda boðið að spila annan leik, ef ekki hættir forrit.
  */
+ alert('Markmiðið er að svara eins mörgum af 10 dæmum rétt eins hratt og mögulegt er.');
 function start() {
-  play();
-  confirm('Viltu spila annan leik?')
+  do {
+    play();
+  } while (confirm('Spila annan?'));
 }
 
 /**
@@ -31,7 +33,12 @@ function start() {
 function play() {
   var random = randomNumber(1, 100);
 
+  var questions = [ask(), ask(), ask(), ask(), ask(), ask(), ask(), ask(), ask(), ask()],
+  samtals = questions.length,
+  rett = questions.filter(Boolean).length;
+  alert("Þú svaraðir "+rett+" af "+samtals+" dæmum rétt");
 }
+
 
 /**
  * Spyr einnar spurningar og skilar upplýsingum um svar (mögulega með því að
@@ -48,23 +55,22 @@ function play() {
  * Sniðugt væri að færa það að búa til spurningu í nýtt fall sem ask() kallar í.
  */
 function ask() {
-  alert('Markmiðið er að svara eins mörgum af 10 dæmum rétt eins hratt og mögulegt er.');
-  var a = Math.floor(Math.random() * 100.) + 1.;
-  var b = Math.floor(Math.random() * 100.) + 1;
-  var op = ["-", "+"][Math.floor(Math.random()*2)];
 
+  function spurning() {
+    var a = Math.floor(Math.random() * 100) + 1.;
+    var b = Math.floor(Math.random() * 100) + 1;
+    var op = ["-", "+"][Math.floor(Math.random()*2)];
+    return prompt("Hvað er " + a +" " + op + " " + b + "?") == eval(a + op + b);
+  }
+  function spurning() {
   var c = Math.floor(Math.random() * 10) + 1;
   var d = Math.floor(Math.random() * 10) + 1;
   var op = ["/","*"][Math.floor(Math.random()*2)];
   return prompt("Hvað er " + c +" " + op + " " + d +"?") == eval(c + op + d);
-  return prompt("Hvað er " + a +" " + op + " " + b + "?") == eval(a + op + b);
+}
+return spurning();
 }
 
-var questions = [ask(), ask(), ask(), ask(), ask(), ask(), ask(), ask(), ask(), ask()],
-  samtals = questions.length,
-  rett = questions.filter(Boolean).length;
-
-  alert("Þú svaraðir "+rett+" af "+samtals+" dæmum rétt");
 
 /**
  * Skilar tölu af handahófi á bilinu [min, max]
