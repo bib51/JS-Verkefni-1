@@ -16,8 +16,11 @@ const GAMES_TO_PLAY = 10;
 function start() {
   do {
     play();
-  } while (confirm('Spila annan?'));
+  } while (confirm('Spila annan?')) {
+    alert("Hætt í leik.");
+  }
 }
+
 
 /**
  * Spilar einn leik. Heldur utan um hvenær leikur byrjaði, hvenær endar og
@@ -56,21 +59,21 @@ function play() {
  */
 function ask() {
 
-  function spurning() {
+  function spurning1() {
     var a = Math.floor(Math.random() * 100) + 1.;
     var b = Math.floor(Math.random() * 100) + 1;
     var op = ["-", "+"][Math.floor(Math.random()*2)];
     return prompt("Hvað er " + a +" " + op + " " + b + "?") == eval(a + op + b);
   }
-  function spurning() {
+  function spurning1() {
   var c = Math.floor(Math.random() * 10) + 1;
   var d = Math.floor(Math.random() * 10) + 1;
   var op = ["/","*"][Math.floor(Math.random()*2)];
   return prompt("Hvað er " + c +" " + op + " " + d +"?") == eval(c + op + d);
 }
-return spurning();
-}
+return spurning1();
 
+}
 
 /**
  * Skilar tölu af handahófi á bilinu [min, max]
