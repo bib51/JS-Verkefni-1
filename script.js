@@ -21,7 +21,6 @@ function start() {
   }
 }
 
-
 /**
  * Spilar einn leik. Heldur utan um hvenær leikur byrjaði, hvenær endar og
  * fjölda réttra svara. Eftir leik eru birtar upplýsingar um niðurstöðu:
@@ -72,7 +71,6 @@ function ask() {
   return prompt("Hvað er " + c +" " + op + " " + d +"?") == eval(c + op + d);
 }
 return spurning1();
-
 }
 
 /**
